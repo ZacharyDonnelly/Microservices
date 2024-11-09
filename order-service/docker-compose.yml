@@ -1,0 +1,13 @@
+services:
+  order-service-mongodb:
+    image: mongo:8.0.0
+    container_name: order-service-mongodb
+    ports:
+        - "27018:27017"
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: password
+        MONGO_INITDB_DATABASE: order-service
+    volumes:
+        - ./data:/data/db
+    restart: always
