@@ -1,6 +1,6 @@
 package com.zachdonnelly.order.client;
 
-import com.zachdonnelly.order.models.Product;
+import com.zachdonnelly.order.model.Product;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.GetExchange;

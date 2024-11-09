@@ -1,14 +1,13 @@
-package com.zachdonnelly.product.services;
+package com.zachdonnelly.product.service;
 
 import com.zachdonnelly.product.dto.ProductRequest;
 import com.zachdonnelly.product.dto.ProductResponse;
-import com.zachdonnelly.product.models.Product;
+import com.zachdonnelly.product.model.Product;
 import com.zachdonnelly.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service

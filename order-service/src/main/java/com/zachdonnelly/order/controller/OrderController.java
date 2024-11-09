@@ -1,10 +1,10 @@
-package com.zachdonnelly.order.controllers;
+package com.zachdonnelly.order.controller;
 
 import com.zachdonnelly.order.client.Client;
 import com.zachdonnelly.order.dto.OrderRequest;
 import com.zachdonnelly.order.dto.OrderResponse;
-import com.zachdonnelly.order.models.Product;
-import com.zachdonnelly.order.services.OrderService;
+import com.zachdonnelly.order.model.Product;
+import com.zachdonnelly.order.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.zachdonnelly.order.models;
+package com.zachdonnelly.product.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,16 +7,19 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "order")
+import java.math.BigDecimal;
+
+@Document(value = "product")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class Order {
+public class Product {
     @Id
     private String id;
-    private String customerId;
-    private String orderId;
-    private String productName;
+    private String name;
+    private String description;
+    private String category;
     private Integer quantity;
+    private BigDecimal price;
 }

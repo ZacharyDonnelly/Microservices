@@ -1,6 +1,6 @@
 package com.zachdonnelly.product.repository;
 
-import com.zachdonnelly.product.models.Product;
+import com.zachdonnelly.product.model.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

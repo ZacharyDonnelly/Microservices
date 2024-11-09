@@ -1,8 +1,8 @@
-package com.zachdonnelly.order.services;
+package com.zachdonnelly.order.service;
 
 import com.zachdonnelly.order.dto.OrderRequest;
 import com.zachdonnelly.order.dto.OrderResponse;
-import com.zachdonnelly.order.models.Order;
+import com.zachdonnelly.order.model.Order;
 import com.zachdonnelly.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

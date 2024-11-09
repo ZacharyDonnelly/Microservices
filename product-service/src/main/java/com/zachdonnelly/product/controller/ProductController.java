@@ -1,8 +1,8 @@
-package com.zachdonnelly.product.controllers;
+package com.zachdonnelly.product.controller;
 
 import com.zachdonnelly.product.dto.ProductRequest;
 import com.zachdonnelly.product.dto.ProductResponse;
-import com.zachdonnelly.product.services.ProductService;
+import com.zachdonnelly.product.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

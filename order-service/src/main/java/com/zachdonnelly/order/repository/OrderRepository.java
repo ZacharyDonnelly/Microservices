@@ -1,6 +1,6 @@
 package com.zachdonnelly.order.repository;
 
-import com.zachdonnelly.order.models.Order;
+import com.zachdonnelly.order.model.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
