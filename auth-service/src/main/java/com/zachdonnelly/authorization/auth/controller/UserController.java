@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -41,5 +41,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserResponse getUserByCustomerId(@PathVariable String customerId) {
         return userService.findByCustomerId(customerId);
+    }
+
+    @GetMapping(path = "/health")
+    public String getHealthStatus(){
+        return "OK";
     }
 }
