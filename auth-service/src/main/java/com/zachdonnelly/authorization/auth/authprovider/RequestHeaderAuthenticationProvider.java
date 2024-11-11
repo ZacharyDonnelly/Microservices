@@ -1,4 +1,5 @@
 package com.zachdonnelly.authorization.auth.authprovider;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
