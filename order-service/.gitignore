@@ -34,4 +34,4 @@ build/
 .idea*
 .mvn*
 data*
-application.properties
+application.yml

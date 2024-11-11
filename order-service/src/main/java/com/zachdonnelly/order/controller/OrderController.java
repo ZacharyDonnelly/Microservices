@@ -1,26 +1,33 @@
 package com.zachdonnelly.order.controller;
 
-import com.zachdonnelly.order.client.Client;
 import com.zachdonnelly.order.dto.OrderRequest;
 import com.zachdonnelly.order.dto.OrderResponse;
 import com.zachdonnelly.order.model.Product;
 import com.zachdonnelly.order.service.OrderService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/v1")
 public class OrderController {
 
     private final OrderService orderService;
-    private final Client client;
+    private final RestTemplate restTemplate;
 
-    public OrderController(OrderService orderService, Client client) {
+
+    private static HttpEntity<?> getHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        return new HttpEntity<>(headers);
+    }
+
+    public OrderController(OrderService orderService, RestTemplate restTemplate) {
         this.orderService = orderService;
-        this.client = client;
+        this.restTemplate = restTemplate;
     }
 
     @PostMapping("/orders/create")
@@ -40,21 +47,47 @@ public class OrderController {
     }
 
     @PostMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createProduct(@RequestBody Product productRequest) {
+    public String createProduct(@RequestBody Product productRequest) throws RestClientException {
+        String baseUrl = "http://PRODUCT-SERVICE/products";
+        ResponseEntity<String> response = null;
+
         try {
-            client.createProduct(productRequest);
-        } catch (Exception e) {
+            response = restTemplate.postForEntity(baseUrl, productRequest, String.class);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             throw new RuntimeException("Error creating product!");
         }
+
+        return Objects.requireNonNull(response).getBody();
     }
 
     @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getAllProducts() {
-        return client.getAllProducts();
+    public String getAllProducts() {
+        String baseUrl = "http://PRODUCT-SERVICE/products";
+        ResponseEntity<String> response = null;
+
+        try {
+            response = restTemplate.getForEntity(baseUrl, String.class);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            throw new RuntimeException("Error creating product!");
+        }
+
+        return Objects.requireNonNull(response).getBody();
     }
 
     @GetMapping(value = "/products/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product getProductById(@PathVariable String id) {
-        return client.getProductById(id);
+    public String getProductById(@PathVariable String id) {
+        String baseUrl = "http://PRODUCT-SERVICE/products";
+        ResponseEntity<String> response = null;
+
+        try {
+            response = restTemplate.getForEntity(baseUrl + "/" + id, String.class);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            throw new RuntimeException("Error creating product!");
+        }
+
+        return Objects.requireNonNull(response).getBody();
     }
 }
